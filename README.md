@@ -1,2 +1,2 @@
-# Tour-Booking-Website-Basic
-Website đặt tour du lịch cơ bản
+# Tour Booking Website Basic Using Laravel Framework
+Website đặt tour du lịch cơ bản sử dụng laravel framework
