@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
+use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
+use App\Http\Requests\UserLogin;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use App\Http\Requests\UpdateProfile;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 class LoginController extends Controller
 {
     /*
@@ -12,28 +17,44 @@ class LoginController extends Controller
     | Login Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
     */
+    
+    public function login(Request $request){
+        if(Sentinel::check()){
+            return redirect(route('dashboard'));
+        }
+        $request->session()->put('backUrl', URL::previous());
+        return view('login');
+    }
+    public function processLogin(UserLogin $request){
+        try
+        {
+            $remember = (bool) $request->get('remember', false);
 
-    use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+            if (Sentinel::authenticate($request->all(), $remember))
+            {
+                $backUrl = $request
+                ->session()
+                ->get('backUrl', route('dashboard'));
+                $request->session()->forget('backUrl');
+                return redirect($backUrl);
+            }
+            $errors = 'Tên đăng nhập hoặc mật khẩu không đúng.';
+        }
+        catch (NotActivatedException $e)
+        {
+            $errors = 'Tài khoản của bạn chưa được kích hoạt!';
+        }
+        catch (ThrottlingException $e)
+        {
+            $delay = $e->getDelay();
+            $errors = "Tài khoản của bạn bị block trong vòng {$delay} giây.";
+        }
+        return redirect()->back()->withInput()->withErrors($errors);
+    }
+    public function logout(Request $request){
+        $request->session()->forget('backUrl');
+        Sentinel::logout();
+        return redirect(route('home'));
     }
 }

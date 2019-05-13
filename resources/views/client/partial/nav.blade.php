@@ -34,7 +34,7 @@
                 <li><a href="contact.html">Liên Hệ</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right hidden-sm">
-                <li><a class="" href="#"><i class="fa fa-user" aria-hidden="true"></i> Đăng Nhập</a></li>
+                <li><a class="" href="{{ route('login') }}"><i class="fa fa-user" aria-hidden="true"></i> Đăng Nhập</a></li>
                 <li><a class="" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ Hàng</a></li>
             </ul>
         </div> <!-- /.navbar-collapse --> 
