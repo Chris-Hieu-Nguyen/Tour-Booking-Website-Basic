@@ -27,7 +27,7 @@ Route::group(['prefix' => 'ad'], function () {
             Route::get('/dashboard', 'Admin\HomeController@index')->name('dashboard');
             
             Route::group(['prefix' => '/tour'], function () {
-                Route::get('/','Admin\TourController@index');
+                Route::get('/','Admin\TourController@index')->name('list.tour');
             });
         });
     });
