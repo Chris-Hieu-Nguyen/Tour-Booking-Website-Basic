@@ -12,4 +12,8 @@ class TourController extends Controller
         $data = Tour::all();
         return view('admin.tour.index',compact('data'));
     }
+    public function create()
+    {
+       return view('admin.tour.create');
+    }
 }

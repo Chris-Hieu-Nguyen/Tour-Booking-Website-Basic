@@ -27,8 +27,10 @@ Route::group(['prefix' => 'ad'], function () {
             Route::get('/dashboard', 'Admin\HomeController@index')->name('dashboard');
             
             Route::group(['prefix' => '/tour'], function () {
-                Route::get('/','Admin\TourController@index')->name('list.tour');
+                Route::get('/','Admin\TourController@index')->name('tour.list');
+                Route::get('/create','Admin\TourController@create')->name('tour.create');
             });
         });
     });
 });
+Route::get('/profile',['middleware' => ['check.login','redirect.role'],'uses' =>'HomeController@profile'])->name('profile');

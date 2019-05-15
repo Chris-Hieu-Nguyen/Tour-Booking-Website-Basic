@@ -21,7 +21,11 @@ class LoginController extends Controller
     
     public function login(Request $request){
         if(Sentinel::check()){
-            return redirect(route('dashboard'));
+            if(Sentinel::getUser()->inRole('admin')){
+                return redirect(route('dashboard'));
+            }else{
+                return redirect(route('profile'));
+            }
         }
         $request->session()->put('backUrl', URL::previous());
         return view('login');

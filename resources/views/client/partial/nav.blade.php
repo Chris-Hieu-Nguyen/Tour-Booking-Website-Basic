@@ -12,9 +12,9 @@
         <!--Collect the nav links, forms, and other content for toggling--> 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index-2.html">Trang Chủ</a></li>
+                <li class="active"><a href="index-2.html">{{ __('front.home')}}</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Điểm Đến<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">{{ __('front.destination')}}<span class="caret"></span></a>
                     <ul class="dropdown-menu">
 						<li><a href="index-2.html">Du Lịch Trong Nước</a></li>
 						<li class="dropdown-submenu">
@@ -29,13 +29,29 @@
 						</li>
                     </ul>
                 </li>
-                <li><a href="tours.html">Tours</a></li>
-                <li><a href="blog-grid-1.html">Blog</a></li>
-                <li><a href="contact.html">Liên Hệ</a></li>
+                <li><a href="tours.html">{{__('front.tour')}}</a></li>
+                <li><a href="blog-grid-1.html">{{__('front.blog')}}</a></li>
+            <li><a href="contact.html">{{__('front.contact')}}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right hidden-sm">
+                @if(Sentinel::getUser())
+                    <li><a class="" href="{{ route('profile') }}"><i class="fa fa-user" aria-hidden="true"></i> {{Sentinel::getUser()->first_name}}</a></li>
+                @else
                 <li><a class="" href="{{ route('login') }}"><i class="fa fa-user" aria-hidden="true"></i> Đăng Nhập</a></li>
+                @endif
                 <li><a class="" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ Hàng</a></li>
+                <li>
+                    <div class="btn-group">
+                        <p  class="dropdown-toggle" data-toggle="dropdown" style="padding: 20px 8px;cursor:pointer;color:white;">
+                        <i class="fa fa-language"></i>
+                        {{__('front.lang')}}<span class="caret"></span>
+                        </p>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="?lang=vi">Vietnamese</a></li>
+                          <li><a href="?lang=en">English</a></li>
+                        </ul>
+                      </div>
+                </li>
             </ul>
         </div> <!-- /.navbar-collapse --> 
     </div> <!-- /.container --> 

@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-blue sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -33,7 +33,7 @@
                  <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="buttons.html">Loại Hình</a>
                     <a class="collapse-item" href="cards.html">Khu Vực</a>
-                 <a class="collapse-item" href="{{route('list.tour')}}">Danh Sách Tour</a>
+                 <a class="collapse-item" href="{{route('tour.list')}}">Danh Sách Tour</a>
                 </div>
             </div>
          </li>

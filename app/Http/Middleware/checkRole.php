@@ -33,7 +33,7 @@ class checkRole
                     return $next($request);
                 }
             }
-            return Redirect::to('account')->withErrors(['Bạn không được quyền truy cập trang này.']);
+            return Redirect::to('/');
         }
         return $next($request);
     }

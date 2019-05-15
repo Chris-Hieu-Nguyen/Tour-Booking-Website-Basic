@@ -5,8 +5,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Danh Sách Tour</h1>
-    
-
+	<a class="btn btn-danger mb-2" href="{{route('tour.create')}}"><i class="fas fa-plus"></i> {{__('label.create_new')}}</a>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
       <div class="card-header py-3">
