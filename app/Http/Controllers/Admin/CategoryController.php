@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\Category\CreateRequest;
+use App\Http\Requests\Category\UpdateRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\CategoryTranslation;
@@ -50,7 +51,21 @@ class CategoryController extends Controller
     public function edit($id){
         $cate = Category::find($id);
         $cate_trans = $cate->category_trans;
-        return view('admin.category.edit',compact('cate_trans'));
+        return view('admin.category.edit',compact('cate_trans','cate'));
+    }
+    public function update(UpdateRequest $request,$id){
+        $input = $request->all();
+        $category = Category::find($id);
+        $category->slug = str_slug($input['title']['vi']);
+        $category->save();
+        $locales = config('app.locales');
+        foreach ($locales as $l=>$val){
+            $category_trans = $category->translation($l);
+            $category_trans->name = $input['title'][$l]?$input['title'][$l]:'';
+            $category_trans->save();
+        }
+        return redirect(route('category.list'))
+        ->with('success', 'Edited successfully!');
     }
     public function delete(Request $request)
     {

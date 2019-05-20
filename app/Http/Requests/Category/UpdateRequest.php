@@ -25,8 +25,8 @@ class UpdateRequest extends FormRequest
     {
         return [
             //
-            'title.vi' => 'required',
-            'title.en' => 'required'
+            'title.vi' => 'required|max:100',
+            'title.en' => 'nullable|max:100'
         ];
     }
 }

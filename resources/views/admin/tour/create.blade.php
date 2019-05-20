@@ -24,7 +24,7 @@
 					</div>
 					<div class="form-group">
 						<label class="text-dark">Mô Tả Chi Tiết</label>
-						{{ Form::textarea('content[vi]',null,['class'=>'form-control ckeditor','id'=>'content_vi'])}}
+						{{ Form::textarea('content[vi]',null,['class'=>'form-control','id'=>'content_vi'])}}
 					</div>
 				</div>
 				<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -38,7 +38,7 @@
 					</div>
 					<div class="form-group">
 						<label class="text-dark">Description</label>
-						{{ Form::textarea('content[vi]',null,['class'=>'form-control ckeditor','id'=>'content_en'])}}
+						{{ Form::textarea('content[vi]',null,['class'=>'form-control','id'=>'content_en'])}}
 					</div>					
 				</div>
 			</div>

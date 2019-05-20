@@ -42,6 +42,16 @@ Route::group(['prefix' => 'ad'], function () {
                 Route::post("/store","Admin\CategoryController@store")->name('category.store');
                 Route::delete('/delete',"Admin\CategoryController@delete")->name('category.delete');
                 Route::get('/edit/{id}',"Admin\CategoryController@edit")->name('category.edit');
+                Route::post('/edit/{id}',"Admin\CategoryController@update")->name('category.update');
+            });
+
+            Route::group(['prefix' => '/area'], function () {
+                Route::get('/','Admin\AreaController@index')->name('area.list');
+                Route::get("/create","Admin\AreaController@create")->name('area.create');
+                Route::post("/store","Admin\AreaController@store")->name('area.store');
+                Route::delete('/delete',"Admi\Area@delete")->name('area.delete');
+                Route::get('/edit/{id}',"Admin\AreaController@edit")->name('area.edit');
+                Route::post('/edit/{id}',"Admin\AreaController@update")->name('area.update');
             });
 
 

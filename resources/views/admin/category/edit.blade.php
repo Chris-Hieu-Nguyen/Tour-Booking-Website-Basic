@@ -4,7 +4,7 @@
 <div class="container-fluid">
 	<h1 class="h3 mb-2 text-gray-800">Create New Category</h1>
 	@include('admin.partial.message')
-	{{Form::open(['url' => route('category.store')])}}
+	{{Form::open(['url' => route('category.update',['id' => $cate->id ])])}}
 	<div class="row">
 		<div class="col-9">
 			<nav>
@@ -20,7 +20,7 @@
 						{{ Form::text('title[vi]',$cate_trans[0]->name,['class' => 'form-control input-border' ])}}
 						{!! $errors->has('title.vi') ? '<p class="text-danger">'.$errors->first('title.vi').'</p>' : '' !!}
 						{!! $errors->has('title.en') ? '<p class="text-danger">'.$errors->first('title.en').'</p>' : '' !!}
-					</div>
+					</div >
 				</div>
 				<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 					<div class="form-group">
@@ -32,7 +32,7 @@
 		</div>
 		<div class="col-3">
 			<div class="form-group">
-				<button class="btn bg-blue form-control text-white" style="border-radius:unset;"><i class="fab fa-telegram-plane"></i> &nbsp Thêm Danh Mục</button>
+				<button class="btn bg-blue form-control text-white" style="border-radius:unset;"><i class="fab fa-telegram-plane"></i> &nbsp Sửa Danh Mục</button>
 			</div>
 		</div>
 	</div>
