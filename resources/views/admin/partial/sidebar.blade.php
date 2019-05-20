@@ -13,14 +13,19 @@
      
           <!-- Nav Item - Dashboard -->
           <li class="nav-item active">
-           <a class="nav-link" href="index.html">
+          <a class="nav-link" href="{{route('dashboard')}}">
               <i class="fas fa-fw fa-tachometer-alt"></i>
               <span>Bảng điều khiển</span></a>
           </li>
      
           <!-- Divider -->
           <hr class="sidebar-divider">
-     
+          <li class="nav-item">
+                <a class="nav nav-link" href="{{route('users')}}">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Người Dùng</span></a>
+            </li>
+            <hr class="sidebar-divider">
           <!-- Heading -->
      
           <!-- Nav Item - Pages Collapse Menu -->
@@ -31,7 +36,7 @@
              </a>
              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                  <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="buttons.html">Loại Hình</a>
+                 <a class="collapse-item" href="{{route('category.list')}}">Danh Mục</a>
                     <a class="collapse-item" href="cards.html">Khu Vực</a>
                  <a class="collapse-item" href="{{route('tour.list')}}">Danh Sách Tour</a>
                 </div>

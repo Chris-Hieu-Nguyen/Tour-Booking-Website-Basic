@@ -8,8 +8,8 @@ return[
     'services' => 'Dịch vụ',
     'news' => 'Tin tức',
     'contact' => 'Contact',
-    'detail' => 'Chi tiết',
-    'title' => 'Tiêu đề',
+    'detail' => 'Detail',
+    'title' => 'Title',
     'email' => 'E-mail',
     'content' => 'Nội dung',
     'send' => 'Gửi',
@@ -18,5 +18,7 @@ return[
     'tour' => 'Tour',
     'destination' => 'Destinations',
     'blog' => 'Blog',
-    'lang' => 'Language'
+    'lang' => 'Language',
+    'login' => 'Login',
+    'cart' => 'Cart'
 ];

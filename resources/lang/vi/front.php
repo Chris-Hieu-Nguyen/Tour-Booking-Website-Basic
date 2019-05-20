@@ -18,5 +18,7 @@ return[
     'tour' => 'Tour',
     'destination' => 'Điểm Đến',
     'blog' => 'blog',
-    'lang' => 'Ngôn Ngữ'
+    'lang' => 'Ngôn Ngữ',
+    'login' => 'Đăng Nhập',
+    'cart' => 'Giỏ Hàng'
 ];

@@ -16,8 +16,6 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('slug',80)->unique();
-            $table->string('photo',255);
-            $table->unsignedTinyInteger('status')->default(0);
             $table->timestamps();
         });
         Schema::create('category_translations', function (Blueprint $table) {

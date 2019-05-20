@@ -83,7 +83,6 @@
 					<iframe src="/backend/fileman/index.html?integration=custom" style="width:100%;height:100%" frameborder="0"></iframe>
 				</div>
 			</div>
-			hihi
 		</div>
 	</div>
 	{{Form::close()}}

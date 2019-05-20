@@ -16,4 +16,7 @@ class TourController extends Controller
     {
        return view('admin.tour.create');
     }
+    public function store(TourRequest $request){
+        
+    }
 }

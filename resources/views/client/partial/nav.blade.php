@@ -37,20 +37,18 @@
                 @if(Sentinel::getUser())
                     <li><a class="" href="{{ route('profile') }}"><i class="fa fa-user" aria-hidden="true"></i> {{Sentinel::getUser()->first_name}}</a></li>
                 @else
-                <li><a class="" href="{{ route('login') }}"><i class="fa fa-user" aria-hidden="true"></i> Đăng Nhập</a></li>
+                <li><a class="" href="{{ route('login') }}"><i class="fa fa-user" aria-hidden="true"></i> {{__('front.login')}}</a></li>
                 @endif
-                <li><a class="" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ Hàng</a></li>
+            <li><a class="" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> {{__('front.cart')}}</a></li>
                 <li>
-                    <div class="btn-group">
-                        <p  class="dropdown-toggle" data-toggle="dropdown" style="padding: 20px 8px;cursor:pointer;color:white;">
-                        <i class="fa fa-language"></i>
-                        {{__('front.lang')}}<span class="caret"></span>
-                        </p>
-                        <ul class="dropdown-menu" role="menu">
+                    <a  class="dropdown-toggle" data-toggle="dropdown" style="">
+                    <i class="fa fa-language"></i>
+                    {{__('front.lang')}}<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
                           <li><a href="?lang=vi">Vietnamese</a></li>
                           <li><a href="?lang=en">English</a></li>
-                        </ul>
-                      </div>
+                    </ul>
                 </li>
             </ul>
         </div> <!-- /.navbar-collapse --> 

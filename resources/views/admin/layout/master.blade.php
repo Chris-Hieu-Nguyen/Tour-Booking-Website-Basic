@@ -33,6 +33,7 @@
             @include('admin.partial.footer')
         </div>
 </div>
+@yield('modal')
 
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
@@ -64,10 +65,10 @@
           $('#roxyCustomPanel').dialog('close');
         }
 
-        // $(function(){
-        //   CKEDITOR.replace( 'content_vi', options);
-        //   //CKEDITOR.replace( 'content_en', options);
-        // });
+        $(function(){
+          CKEDITOR.replace( 'content_vi', options);
+          CKEDITOR.replace( 'content_en', options);
+        });
     </script>
     @yield('script')
 </body>
