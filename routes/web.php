@@ -34,6 +34,10 @@ Route::group(['prefix' => 'ad'], function () {
             Route::group(['prefix' => '/tour'], function () {
                 Route::get('/','Admin\TourController@index')->name('tour.list');
                 Route::get('/create','Admin\TourController@create')->name('tour.create');
+                Route::post('/create','Admin\TourController@store')->name('tour.store');
+                Route::get('/edit/{id}','Admin\TourController@edit')->name('tour.edit');
+                Route::post('/edit/{id}','Admin\TourController@update')->name('tour.update');
+                Route::delete('/delete/{id}','Admin\TourController@create')->name('tour.delete');
             });
 
             Route::group(['prefix' => '/category'], function () {
@@ -54,6 +58,14 @@ Route::group(['prefix' => 'ad'], function () {
                 Route::post('/edit/{id}',"Admin\AreaController@update")->name('area.update');
             });
 
+            Route::group(['prefix' => '/destination'], function () {
+                Route::get('/','Admin\DestinationController@index')->name('destination.list');
+                Route::get("/create","Admin\DestinationController@create")->name('destination.create');
+                Route::post("/store","Admin\DestinationController@store")->name('destination.store');
+                Route::delete('/delete',"Admi\DestinationController@delete")->name('destination.delete');
+                Route::get('/edit/{id}',"Admin\DestinationController@edit")->name('destination.edit');
+                Route::post('/edit/{id}',"Admin\DestinationController@update")->name('destination.update');
+            });
 
 
         });

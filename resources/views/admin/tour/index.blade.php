@@ -16,8 +16,10 @@
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
+				<th>STT</th>
                 <th>Name</th>
-                <th>Mô Tả</th>
+				<th>Mô Tả</th>
+				<th>Ảnh</th>
                 <th>Số Người</th>
                 <th>Ngày Bắt Đầu</th>
                 <th>Ngày Kết Thúc</th>
@@ -26,8 +28,10 @@
             </thead>
             <tfoot>
               <tr>
+				<th>STT</th>
                 <th>Name</th>
-                <th>Mô Tả</th>
+				<th>Mô Tả</th>
+				<th>Ảnh</th>
                 <th>Số Người</th>
                 <th>Ngày Bắt Đầu</th>
                 <th>Ngày Kết Thúc</th>
@@ -35,25 +39,26 @@
               </tr>
             </tfoot>
             <tbody>
-                <tr>
-                    <td>Du lịch Hạ Long</td>
-                    <td>đi chơi Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                    <td>100</td>
-                    <td>Ngày Bắt Đầu</td>
-                    <td>Ngày Kết Thúc</td>
-                    <td>
-                       <!-- Example single danger button -->
-                        <div class="btn-group">
-                                <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Tuỳ Chọn
-                                </button>
-                                <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#"><i class="fa fa-eye"></i> Chi Tiết</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-edit"> </i> Sửa</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Xoá</a>
-                        </div>
-                    </td>
-                </tr>
+				@php
+					$stt =0;
+				@endphp
+				@foreach ($dataTour as $item)
+					<tr>
+						<td>{{ ++$stt}}</td>
+						<td>{{ $item->translation('vi')->title}}</td>
+						<td>{{ $item->translation('vi')->brief}}</td>
+						<td>
+							<img src="{{$item->avatar}}" width="100" height="100" alt="">
+						</td>
+						<td>{{$item->max_people}}</td>
+						<td>{{$item->start_day}}</td>
+						<td>{{$item->end_day}}</td>
+						<td>
+							<a title="edit" class="btn btn-warning text-white" href="{{route('tour.edit',[ 'id'=> $item->id])}}"><i class="far fa-edit"></i></a> &nbsp;
+							<a title="delete" class="btn btn-danger text-white"><i class="fas fa-trash"></i></a> &nbsp;
+						</td>
+					</tr>
+				@endforeach
             </tbody>
           </table>
         </div>
@@ -63,9 +68,9 @@
 @endsection
 @section('script')
     <!-- Page level plugins -->
-    <script src="/admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/backend/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/backend/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="/admin/js/demo/datatables-demo.js"></script>
+	<script src="/backend/js/demo/datatables-demo.js"></script>
 @endsection

@@ -38,7 +38,7 @@
                  <div class="bg-white py-2 collapse-inner rounded">
                  <a class="collapse-item" href="{{route('category.list')}}">Danh Mục</a>
                  <a class="collapse-item" href="{{route('area.list')}}">Khu Vực</a>
-                 <a class="collapse-item" href="{{route('area.list')}}">Điểm Đến</a>
+                 <a class="collapse-item" href="{{route('destination.list')}}">Điểm Đến</a>
                  <a class="collapse-item" href="{{route('tour.list')}}">Danh Sách Tour</a>
                 </div>
             </div>

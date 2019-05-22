@@ -5,7 +5,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Danh Mục</h1>
-    <a class="btn btn-danger mb-2" href="{{route('area.create')}}"><i class="fas fa-plus"></i> {{__('label.create_new')}}</a>
+    <a class="btn btn-danger mb-2" href="{{route('destination.create')}}"><i class="fas fa-plus"></i> {{__('label.create_new')}}</a>
     @include('admin.partial.message')
     <!-- DataTales Example -->
     <div class="card shadow mb-4 list-category">
@@ -19,7 +19,7 @@
               <tr>
                 <th>STT</th>
 				<th>Tên</th>
-				<th>Hiển Thị</th>
+				<th>Ảnh</th>
                 <th>Tuỳ Chọn</th>
               </tr>
             </thead>
@@ -27,7 +27,7 @@
               <tr>
                 <th>STT</th>
 				<th>Tên</th>
-				<th>Hiển Thị</th>
+				<th>Ảnh</th>
                 <th>Tuỳ Chọn</th>
               </tr>
             </tfoot>
@@ -35,17 +35,15 @@
 				@php
 					$stt = 0;
 				@endphp
-				@foreach ($dataArea as $item)
+				@foreach ($dataDestination as $item)
 					<tr>
-						<td>{{++$stt}}</td>
-						<td>{{ $item->area_translation[0]->name}}</td>
-						@if($item->status !=0)
-						<td class="text-success text-center"><i class="fas fa-circle"></i> Hiển Thị</td>
-						@else
-						<td class="text-danger text-center"><i class="fas fa-circle"></i> Ẩn</td>
-						@endif
+                        <td>{{++$stt}}</td>
+						<td>{{$item->destination_translation[0]->name}}</td>
 						<td class="text-center">
-							<a href="{{route('area.edit',['id' => $item->id ])}}" class="btn btn-warning"><i class="far fa-edit"></i></a>
+							<img src="{{$item->photo}}" width="100" height="100" alt="">
+						</td>
+						<td class="text-center">
+							<a href="{{route('destination.edit',['id' => $item->id ])}}" class="btn btn-warning"><i class="far fa-edit"></i></a>
 							<button href="" class="btn btn-danger delete" data_id="{{$item->id}}"><i class="fas fa-trash"></i></button>
 						</td>
 					</tr>
@@ -61,7 +59,7 @@
 <div id="deleteModal" class="modal fade" role='dialog'>
 		<div class="modal-dialog">
 			<div class="modal-content">
-			{!! Form::open(['method' => 'DELETE', 'route'=>['area.delete'], 'id'=>'frm_delete']) !!}
+			{!! Form::open(['method' => 'DELETE', 'route'=>['destination.delete'], 'id'=>'frm_delete']) !!}
 				<div class="modal-header">
 					<h4 class="modal-title">Xóa</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -83,11 +81,11 @@
 @endsection
 @section('script')
     <!-- Page level plugins -->
-    <script src="/admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/backend/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/backdend/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-	<script src="/admin/js/demo/datatables-demo.js"></script>
+	<script src="/backdend/js/demo/datatables-demo.js"></script>
 	<script>
 		$('.delete').on('click', function(){
 			$('#delete_id').val($(this).attr('data_id'));

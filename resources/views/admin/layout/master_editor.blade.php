@@ -48,5 +48,28 @@
     <script src="/backend/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
+    <script src="/backend/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        baseUrl = "{{URL::to('/')}}";
+        roxyFileman = '/backend/fileman/index.html?integration=ckeditor';
+        options = {
+                removeDialogTabs: 'link:upload;image:Upload',
+                filebrowserBrowseUrl:roxyFileman,
+                filebrowserUploadUrl:roxyFileman,
+                filebrowserImageBrowseUrl:roxyFileman+'&type=image'
+        };
+        function openCustomRoxy(){
+          $('#roxyCustomPanel').dialog({modal:true, width:875,height:600});
+        }
+        function closeCustomRoxy(){
+          $('#roxyCustomPanel').dialog('close');
+        }
+
+        $(function(){
+          CKEDITOR.replace( 'content_vi', options);
+          CKEDITOR.replace( 'content_en', options);
+        });
+    </script>
+    @yield('script')
 </body>
 </html>

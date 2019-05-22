@@ -19,8 +19,8 @@ class CreateToursTable extends Migration
             $table->unsignedInteger('destination_id')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->string('avatar',255)->nullable();
-            $table->float('price')->default(0);
-            $table->float('price_child')->default(0);
+            $table->float('price');
+            $table->float('price_child');
             $table->unsignedInteger('max_people')->default(0);
             $table->float('rating')->default(0);
             $table->tinyInteger('status')->unsigned()->default(1);
@@ -47,6 +47,5 @@ class CreateToursTable extends Migration
     public function down()
     {
         Schema::dropIfExists('tours');
-        Schema::dropIfExists('tour_translations');
     }
 }
