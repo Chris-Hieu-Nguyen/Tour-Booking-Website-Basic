@@ -15,9 +15,20 @@ class CreateBillsTable extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('users_id');
-            $table->unsignedInteger('tour_id');
+            $table->unsignedInteger('user_id');
+            $table->string('email',191);
+            $table->string('phone',11);
             $table->float('total');
+            $table->integer('status')->default(0);
+            $table->timestamps();
+        });
+        Schema::create('bill_details', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedInteger('bill_id');
+            $table->unsignedInteger('tour_id');
+            $table->integer('people')->default(0);
+            $table->float('price');
+            $table->integer('qty')->default(0);
             $table->timestamps();
         });
     }

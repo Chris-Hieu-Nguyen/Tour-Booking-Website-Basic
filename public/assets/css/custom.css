@@ -1,0 +1,11 @@
+.img-200 {
+    height: 200px;
+    max-height: 200px;
+}
+.img-250 {
+    height: 250px;
+    max-height: 250px;
+}
+.content-post p {
+    width: 100% !important;
+}

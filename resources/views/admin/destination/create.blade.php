@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('admin.layout.master_editor')
 @section('title','Tạo Điểm Đến Mới')
 @section('content')
 <div class="container-fluid">

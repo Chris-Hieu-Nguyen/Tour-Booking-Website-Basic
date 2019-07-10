@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBillDetailsTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateBillDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bill_details', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('bill_id');
-            $table->unsignedInteger('children')->default(0);
-            $table->unsignedInteger('children_8')->default(0);
-            $table->unsignedInteger('room_category_id');
+            $table->unsignedInteger('user_id');
+            $table->string('content',255);
+            $table->unsignedInteger('tour_id')->nullable();
+            $table->unsignedInteger('post_id')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateBillDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bill_details');
+        Schema::dropIfExists('comments');
     }
 }

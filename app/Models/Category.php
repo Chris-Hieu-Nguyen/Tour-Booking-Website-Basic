@@ -19,4 +19,8 @@ class Category extends Model
         return $this->hasMany('App\Models\CategoryTranslation', 'category_id', 'id')
         ->where('lang', '=', $language)->first();
     }
+    public function area()
+    {
+        return $this->hasMany('App\Models\Area', 'category_id', 'id');
+    }
 }

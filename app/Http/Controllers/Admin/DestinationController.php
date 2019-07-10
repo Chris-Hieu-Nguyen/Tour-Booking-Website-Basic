@@ -13,7 +13,7 @@ use DB;
 class DestinationController extends Controller
 {
     public function index(){
-        $dataDestination = Destination::all();
+        $dataDestination = Destination::latest()->get();
         return view('admin.destination.index',compact('dataDestination'));
     }
     public function create(){
@@ -68,7 +68,24 @@ class DestinationController extends Controller
         }
         return redirect(route('destination.list'))->with('success','Edited Area successfully !');
     }
-    public function delete(){
-
+    public function delete(Request $request){
+        $id = $request->all()['id'];
+        DB::beginTransaction();
+        try{
+            $destination = Destination::find($id);
+            $countTour = count($destination->tour);
+            if($countTour>0){
+                DB::table('tours')->where('destination_id','=',$destination->id)->delete();
+            }
+            DB::table('destination_translations')->where('destination_id','=',$destination->id)->delete();
+            $destination->delete();
+        }catch(Exception $e){
+            DB::rollBack();
+            return back()
+            ->withInput()
+            ->with('err', $e->getMessage());
+        }
+        DB::commit();
+        return redirect(route('destination.list'))->with('success','Deleted Tour successfully !');
     }
 }

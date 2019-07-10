@@ -4,7 +4,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Danh Mục</h1>
+    <h1 class="h3 mb-2 text-gray-800">Khu Vực</h1>
     <a class="btn btn-danger mb-2" href="{{route('area.create')}}"><i class="fas fa-plus"></i> {{__('label.create_new')}}</a>
     @include('admin.partial.message')
     <!-- DataTales Example -->
@@ -19,6 +19,7 @@
               <tr>
                 <th>STT</th>
 				<th>Tên</th>
+				<th>Danh Mục</th>
 				<th>Hiển Thị</th>
                 <th>Tuỳ Chọn</th>
               </tr>
@@ -27,6 +28,7 @@
               <tr>
                 <th>STT</th>
 				<th>Tên</th>
+				<th>Danh Mục</th>
 				<th>Hiển Thị</th>
                 <th>Tuỳ Chọn</th>
               </tr>
@@ -39,6 +41,7 @@
 					<tr>
 						<td>{{++$stt}}</td>
 						<td>{{ $item->area_translation[0]->name}}</td>
+						<td>{{ $item->category->translation()->name}}</td>
 						@if($item->status !=0)
 						<td class="text-success text-center"><i class="fas fa-circle"></i> Hiển Thị</td>
 						@else
@@ -46,7 +49,7 @@
 						@endif
 						<td class="text-center">
 							<a href="{{route('area.edit',['id' => $item->id ])}}" class="btn btn-warning"><i class="far fa-edit"></i></a>
-							<button href="" class="btn btn-danger delete" data_id="{{$item->id}}"><i class="fas fa-trash"></i></button>
+							<button class="btn btn-danger delete" data_id="{{$item->id}}"><i class="fas fa-trash"></i></button>
 						</td>
 					</tr>
 				@endforeach
@@ -83,11 +86,11 @@
 @endsection
 @section('script')
     <!-- Page level plugins -->
-    <script src="/admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/backend/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/backend/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-	<script src="/admin/js/demo/datatables-demo.js"></script>
+	<script src="/backend/js/demo/datatables-demo.js"></script>
 	<script>
 		$('.delete').on('click', function(){
 			$('#delete_id').val($(this).attr('data_id'));

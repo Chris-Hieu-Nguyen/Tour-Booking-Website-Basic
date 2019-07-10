@@ -18,14 +18,16 @@
             <thead>
               <tr>
                 <th>STT</th>
-                <th>Tên</th>
+					<th>Tên</th>
+					<th>Số Khu Vực</th>
                 <th>Tuỳ Chọn</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
                 <th>STT</th>
-                <th>Tên</th>
+					<th>Tên</th>
+					<th>Số Khu Vực</th>
                 <th>Tuỳ Chọn</th>
               </tr>
             </tfoot>
@@ -34,9 +36,10 @@
 					$stt = 0;
 				@endphp
 				@foreach ($dataCategory as $item)
-					<tr>
+					<tr class="text-center">
 						<td>{{++$stt}}</td>
 						<td>{{ $item->category_trans[0]->name}}</td>
+						<td>{{count($item->area)}}</td>
 						<td class="text-center">
 							<a href="{{route('category.edit',['id' => $item->id ])}}" class="btn btn-warning"><i class="far fa-edit"></i></a>
 							<button href="" class="btn btn-danger delete" data_id="{{$item->id}}"><i class="fas fa-trash"></i></button>
@@ -76,11 +79,11 @@
 @endsection
 @section('script')
     <!-- Page level plugins -->
-    <script src="/admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/backend/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/backend/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-	<script src="/admin/js/demo/datatables-demo.js"></script>
+	<script src="/backend/js/demo/datatables-demo.js"></script>
 	<script>
 		$('.delete').on('click', function(){
 			$('#delete_id').val($(this).attr('data_id'));

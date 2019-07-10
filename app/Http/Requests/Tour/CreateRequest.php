@@ -24,7 +24,6 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title.vi' => 'requied|max:255',
             'title.vi' => 'required|max:255',
             'brief.vi' => 'required|max:255',
             'title.en' => 'nullable|max:255',

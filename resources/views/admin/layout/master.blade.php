@@ -2,12 +2,12 @@
 <html lang="{{app()->getLocale()}}">
 
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <base href="{{asset('')}}">
 
   <title>@yield('title')</title>
 
@@ -39,6 +39,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
     <script src="/backend/vendor/jquery/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="/backend/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Core plugin JavaScript-->
@@ -46,7 +47,9 @@
 	<script src="/backend/jquery-ui-1.12.1/jquery-ui.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="/backend/js/sb-admin-2.min.js"></script>
+    
 
     <!-- Page level plugins -->
+@yield('script')
 </body>
 </html>

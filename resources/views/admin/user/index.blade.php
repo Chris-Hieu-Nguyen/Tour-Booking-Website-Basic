@@ -28,13 +28,17 @@
               </tr>
             </tfoot>
             <tbody>
+				<?php $stt=0; ?>
                 @foreach ($dataUser as $us)
-                    <tr>
-                        <td>1</td>
+                    <tr class="text-center">
+                        <td>{{++$stt}}</td>
                         <td>{{$us->first_name.' '.$us->last_name}}</td>
                         <td class="text-center">
-                            <a class="btn btn-primary" title="sửa" href=""><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger" title="xoá" href=""><i class="fas fa-trash"></i></a>
+							@if($us->inRole('admin'))
+								<span class="text-danger">Quản Trị</span>
+							@else
+								<span class="text-primary">Thành Viên</span>
+							@endif
                         </td>
                     </tr>
                 @endforeach
@@ -44,4 +48,12 @@
       </div>
     </div>
 </div>
+@endsection
+@section('script')
+    <!-- Page level plugins -->
+    <script src="/backend/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/backend/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+	<script src="/backend/js/demo/datatables-demo.js"></script>
 @endsection

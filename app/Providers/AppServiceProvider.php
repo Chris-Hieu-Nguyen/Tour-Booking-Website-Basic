@@ -4,7 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-
+use App\Models\Category;
+use App\Models\Destination;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -25,5 +26,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        $dataCate = Category::all();
+        $dataDes = Destination::all();
+        view()->share(['dataCate' => $dataCate,'dataDes' => $dataDes]);
     }
 }

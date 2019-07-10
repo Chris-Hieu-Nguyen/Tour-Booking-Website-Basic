@@ -22,4 +22,7 @@ class Destination extends Model
         return $this->hasMany('App\Models\DestinationTranslation', 'destination_id', 'id')
         ->where('lang', '=', $language)->first();
     }
+    public function tour(){
+        return $this->hasMany('App\Models\Tour','destination_id','id');
+    }
 }

@@ -33,7 +33,11 @@
                 <label class="text-dark" >Khu Vực</label>
                 <select name="area_id" class="form-control input-border">
                     @foreach ($area as $item)
-                        <option value="{{ $item->id }}">{{$item->translation('vi')->name}}</option>
+                        @if($item->id==$destination->area_id)
+							<option value="{{ $item->id }}" selected>{{$item->translation('vi')->name}}</option>
+						@else
+							<option value="{{ $item->id }}">{{$item->translation('vi')->name}}</option>
+						@endif
                     @endforeach
                 </select>
             </div>

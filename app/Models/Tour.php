@@ -15,6 +15,7 @@ class Tour extends Model
         'user_id',
         'price',
         'price_child',
+        'sale',
         'max_people',
         'status',
         'rating',
@@ -36,5 +37,12 @@ class Tour extends Model
         }
         return $this->hasMany('App\Models\TourTranslation', 'tour_id', 'id')
         ->where('lang', '=', $language)->first();
+    }
+    public function billdetail(){
+        return $this->hasMany('App\Models\BillDetail','tour_id','id');
+    }
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment', 'tour_id', 'id');
     }
 }

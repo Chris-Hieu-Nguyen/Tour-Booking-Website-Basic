@@ -2,6 +2,7 @@
 <html lang="{{app()->getLocale()}}">
     
 <head>
+    <base href="{{asset('')}}">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +15,8 @@
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="/assets/images/apple-touch-icon-114x114-precomposed.png">
     <!-- Base Css -->
     <link href="/assets/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/css/custom.css" rel="stylesheet" type="text/css"/>
+    <link href="/backend/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
 </head>
     <body>
         <div class="se-pre-con"></div>
@@ -23,7 +26,7 @@
         </div>
         @include('client.partial.footer')
         @yield('modal')
-        <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery.min.js" type="text/javascript"></script>
+        <script src="/assets/js/jquery.min.js" type="text/javascript"></script>
         <!-- jquery ui js -->
         <script src="/assets/js/jquery-ui.min.js" type="text/javascript"></script>
         <!-- bootstrap js -->

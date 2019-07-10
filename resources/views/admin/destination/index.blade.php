@@ -19,7 +19,8 @@
               <tr>
                 <th>STT</th>
 				<th>Tên</th>
-				<th>Ảnh</th>
+				<th>Khu Vực</th>
+				<th>Số Tour</th>
                 <th>Tuỳ Chọn</th>
               </tr>
             </thead>
@@ -27,7 +28,8 @@
               <tr>
                 <th>STT</th>
 				<th>Tên</th>
-				<th>Ảnh</th>
+				<th>Khu Vực</th>
+				<th>Số Tour</th>
                 <th>Tuỳ Chọn</th>
               </tr>
             </tfoot>
@@ -39,9 +41,8 @@
 					<tr>
                         <td>{{++$stt}}</td>
 						<td>{{$item->destination_translation[0]->name}}</td>
-						<td class="text-center">
-							<img src="{{$item->photo}}" width="100" height="100" alt="">
-						</td>
+						<td>{{$item->area->translation()->name}}</td>
+						<td class="text-center">{{count($item->tour)}}</td>
 						<td class="text-center">
 							<a href="{{route('destination.edit',['id' => $item->id ])}}" class="btn btn-warning"><i class="far fa-edit"></i></a>
 							<button href="" class="btn btn-danger delete" data_id="{{$item->id}}"><i class="fas fa-trash"></i></button>
@@ -81,11 +82,11 @@
 @endsection
 @section('script')
     <!-- Page level plugins -->
-    <script src="/backend/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="/backdend/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+	<script src="/backend/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/backend/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-	<script src="/backdend/js/demo/datatables-demo.js"></script>
+	<script src="/backend/js/demo/datatables-demo.js"></script>
 	<script>
 		$('.delete').on('click', function(){
 			$('#delete_id').val($(this).attr('data_id'));

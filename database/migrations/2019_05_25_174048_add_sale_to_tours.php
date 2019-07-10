@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddStatusToAreas extends Migration
+class AddSaleToTours extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class AddStatusToAreas extends Migration
      */
     public function up()
     {
-        Schema::table('areas', function (Blueprint $table) {
-            //
-            Schema::table('areas', function($table) {
-                $table->unsignedTinyInteger('status')->default(0);
-            });
+        Schema::table('tours', function (Blueprint $table) {
+            $table->integer('sale')->default(0);
         });
     }
 
@@ -28,9 +25,9 @@ class AddStatusToAreas extends Migration
      */
     public function down()
     {
-        Schema::table('areas', function (Blueprint $table) {
+        Schema::table('tours', function (Blueprint $table) {
             //
-            $table->dropColumn('status');
+            $table->dropColumn('sale');
         });
     }
 }

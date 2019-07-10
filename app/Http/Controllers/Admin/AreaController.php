@@ -71,7 +71,25 @@ class AreaController extends Controller
         return redirect(route('area.list'))
         ->with('success', 'Edited successfully!');
     }
-    public function delete(){
-
+    public function delete(Request $request){
+        $id = $request->all()['id'];
+        DB::beginTransaction();
+        try{
+            $area = Area::find($id);
+            foreach($area->destination as $item){
+                    DB::table('tours')->where('destiantion_id','=', $item->id)->delete();
+                    DB::table('destination_translations')->where('destination_id','=',$item->id)->delete();
+            }
+            DB::table('destinations')->where('area_id','=',$area->id)->delete();
+            DB::table('area_translations')->where('area_id','=',$area->id);
+            $area->delete();
+        }catch(Exception $e){
+            DB::rollBack();
+            return back()
+            ->withInput()
+            ->with('err', $e->getMessage());
+        }
+        DB::commit();
+        return redirect(route('area.list'))->with('success','Deleted Tour successfully !');
     }
 }

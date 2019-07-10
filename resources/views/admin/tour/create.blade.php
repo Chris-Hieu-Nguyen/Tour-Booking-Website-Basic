@@ -65,6 +65,10 @@
 			</div>
 			<div class="form-row mb-3">
 				<div class="col">
+					<label class="text-dark"> Khuyến Mãi(%)</label>
+					{{Form::number('sale',0,['class' => 'form-control input-border','min' => '0'])}}
+				</div>
+				<div class="col">
 					<label class="text-dark"> Số Người</label>
 					{{Form::number('max_people',0,['class' => 'form-control input-border','min' => '0'])}}
 				</div>

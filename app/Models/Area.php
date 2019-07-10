@@ -22,4 +22,7 @@ class Area extends Model
         return $this->hasMany('App\Models\AreaTranslation', 'area_id', 'id')
         ->where('lang', '=', $language)->first();
     }
+    public function destination(){
+        return $this->hasMany('App\Models\Destination','area_id','id');
+    }
 }

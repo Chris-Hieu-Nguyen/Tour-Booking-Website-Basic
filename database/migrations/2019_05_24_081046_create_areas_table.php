@@ -18,6 +18,7 @@ class CreateAreasTable extends Migration
             $table->string('slug',80)->unique();
             $table->string('photo',255);
             $table->unsignedInteger('category_id');
+            $table->unsignedTinyInteger('status')->default(0);
             $table->timestamps();
         });
 

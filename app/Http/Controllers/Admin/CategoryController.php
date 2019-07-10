@@ -14,7 +14,7 @@ use DB;
 
 class CategoryController extends Controller
 {
-    //
+    
     public function index() {
         $dataCategory = Category::all();
         return view('admin.category.index',compact('dataCategory'));
@@ -69,7 +69,28 @@ class CategoryController extends Controller
     }
     public function delete(Request $request)
     {
-        $input = $request->all();
-        $cate = Category::find($input['id']);
+        $id = $request->all()['id'];
+        DB::beginTransaction();
+        try{
+            $category = Category::find($id);
+            foreach($category->area as $item){
+                foreach ($item->destination as $key) {
+                    DB::table('tours')->where('destination_id','=', $key->id)->delete();
+                    DB::table('destination_translations')->where('destination_id','=',$key->id)->delete();
+                }
+                DB::table('destinations')->where('area_id','=',$item->id)->delete();
+                DB::table('area_translations')->where('area_id','=',$item->id);
+            }
+            DB::table('areas')->where('category_id','=',$category->id)->delete();
+            DB::table('category_translations')->where('category_id','=',$category->id)->delete();
+            $category->delete();
+        }catch(Exception $e){
+            DB::rollBack();
+            return back()
+            ->withInput()
+            ->with('err', $e->getMessage());
+        }
+        DB::commit();
+        return redirect(route('category.list'))->with('success','Deleted Tour successfully !');
     }
 }
